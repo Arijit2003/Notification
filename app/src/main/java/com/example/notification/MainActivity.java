@@ -54,6 +54,22 @@ public class MainActivity extends AppCompatActivity {
         BitmapDrawable bitmapDrawable=(BitmapDrawable) drawable;
         Bitmap largeIcon=bitmapDrawable.getBitmap();
 
+        //Big Picture Style
+        Notification.BigPictureStyle bigPictureStyle=new Notification.BigPictureStyle();
+        bigPictureStyle.bigPicture(((BitmapDrawable)ResourcesCompat.getDrawable(getResources(),R.drawable.img_1,null)).getBitmap());
+        bigPictureStyle.bigLargeIcon(largeIcon);
+        bigPictureStyle.setBigContentTitle("Big Content Title");
+        bigPictureStyle.setSummaryText("Summary Text");
+
+        //Inbox Style
+        Notification.InboxStyle inboxStyle = new Notification.InboxStyle();
+        inboxStyle.addLine("Hi");
+        inboxStyle.addLine("I am Arijit");
+        inboxStyle.addLine("I am an android developer");
+        inboxStyle.addLine("I am the android lead of android club");
+        inboxStyle.setBigContentTitle("Inbox Style Big Content Title");
+        inboxStyle.setSummaryText("Inbox Style Summary text");
+
         //Pending Intent
         Intent nIntent=new Intent(getApplicationContext(),MainActivity.class);
         nIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -69,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     .setSmallIcon(R.drawable.img)
                     .setContentIntent(pi)
                     .setOngoing(true)
+                    .setStyle(inboxStyle)
                     .setContentText("F Notification")
                     .setSubText("First Notification Implementation")
                     .setChannelId(CHANNEL_ID)
@@ -81,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     .setSmallIcon(R.drawable.img)
                     .setContentIntent(pi)
                     .setOngoing(true)
+                    .setStyle(inboxStyle)
                     .setContentText("F Notification")
                     .setSubText("First Notification Implementation")
                     .build();
